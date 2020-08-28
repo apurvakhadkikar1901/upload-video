@@ -1,0 +1,51 @@
+
+<div class="wrapper fadeInDown">  
+  <div id="formContent">
+    <!-- Tabs Titles -->
+    <h1 class="active" style="font-family:Britannic Bold Black; font-size:50px;">
+      <img src ="Education.png" width="150" height="190"><br>Upload PDF
+      </h1>
+<form id="upload-form" action="/upload" method="POST" enctype="multipart/form-data">
+<div><h3 style="font-size:20px;"><label for="userid">Email Id</label></h3><br><br>
+  <input type="text" id="uid" name="userid" value={{userid}}><br><br>
+  <h3 style="font-size:20px;"><label for="subject">Subject</label></h3><br><br>
+  <input type="text" id="subject" name="subject"><br><br>
+
+  <h3 style="font-size:20px;"><label for="class">Standard</label></h3><br><br>
+  <input type="text" id="class" name="class"><br><br>
+
+  <h3 style="font-size:20px;"><label for="orgname">Organization Name</label></h3><br><br>
+  <input type="text" id="orgid" name="Orgname" value={{orgname}}><br><br>
+  
+  
+  <h3 style="font-size:20px;">Select an Pdf to upload:</h3>
+  <center>  <select id="filetype" name="Type"><br>
+    <option value="Pdf">Pdf</option></div><br><br>
+  </select>
+  <br>
+  <br>
+  <div class="upload-container"><input id="file-picker" type="file" name="file"></div>
+  <div><input type="submit" value="Upload Pdf"></div>
+  </center>
+</form>
+</div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+
+    const message = document.getElementById('message');
+    const picker = document.getElementById('file-picker');
+
+    document.getElementById('upload-form').addEventListener('submit', (e) => {
+
+      message.innerText = '';
+
+      if(!picker.files.length) {
+        message.innerText = 'Please select an Pdf to upload.';
+        e.preventDefault();
+        return false;
+      }
+    });
+
+  });
+</script>
